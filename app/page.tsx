@@ -12,6 +12,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Badge } from "@/components/ui/badge"
 import { LineChart } from "@/components/ui/chart"
 import { Trophy, TrendingUp } from "lucide-react"
+import { Loader2 } from "lucide-react"
+
 
 // Mock data - in a real application, this would be loaded from CSV files
 const mockSweetsMakersData = [
@@ -51,6 +53,150 @@ const mockSweetsMakersData = [
     Assigned_Jalebis: 40,
     Adjusted_Assigned_Jalebis: 38,
   },
+  {
+    Employee_ID: "SM005",
+    Target_Laddoos: 50,
+    Assigned_Laddoos: 50,
+    Adjusted_Assigned_Laddoos: 48,
+    Target_Jalebis: 40,
+    Assigned_Jalebis: 40,
+    Adjusted_Assigned_Jalebis: 37,
+  },
+  {
+    Employee_ID: "SM006",
+    Target_Laddoos: 50,
+    Assigned_Laddoos: 50,
+    Adjusted_Assigned_Laddoos: 46,
+    Target_Jalebis: 40,
+    Assigned_Jalebis: 40,
+    Adjusted_Assigned_Jalebis: 35,
+  },
+  {
+    Employee_ID: "SM007",
+    Target_Laddoos: 50,
+    Assigned_Laddoos: 50,
+    Adjusted_Assigned_Laddoos: 49,
+    Target_Jalebis: 40,
+    Assigned_Jalebis: 40,
+    Adjusted_Assigned_Jalebis: 39,
+  },
+  {
+    Employee_ID: "SM008",
+    Target_Laddoos: 50,
+    Assigned_Laddoos: 50,
+    Adjusted_Assigned_Laddoos: 44,
+    Target_Jalebis: 40,
+    Assigned_Jalebis: 40,
+    Adjusted_Assigned_Jalebis: 34,
+  },
+  {
+    Employee_ID: "SM009",
+    Target_Laddoos: 50,
+    Assigned_Laddoos: 50,
+    Adjusted_Assigned_Laddoos: 43,
+    Target_Jalebis: 40,
+    Assigned_Jalebis: 40,
+    Adjusted_Assigned_Jalebis: 33,
+  },
+  {
+    Employee_ID: "SM010",
+    Target_Laddoos: 50,
+    Assigned_Laddoos: 50,
+    Adjusted_Assigned_Laddoos: 47,
+    Target_Jalebis: 40,
+    Assigned_Jalebis: 40,
+    Adjusted_Assigned_Jalebis: 36,
+  },
+  {
+    Employee_ID: "SM011",
+    Target_Laddoos: 50,
+    Assigned_Laddoos: 50,
+    Adjusted_Assigned_Laddoos: 45,
+    Target_Jalebis: 40,
+    Assigned_Jalebis: 40,
+    Adjusted_Assigned_Jalebis: 35,
+  },
+  {
+    Employee_ID: "SM012",
+    Target_Laddoos: 50,
+    Assigned_Laddoos: 50,
+    Adjusted_Assigned_Laddoos: 48,
+    Target_Jalebis: 40,
+    Assigned_Jalebis: 40,
+    Adjusted_Assigned_Jalebis: 38,
+  },
+  {
+    Employee_ID: "SM013",
+    Target_Laddoos: 50,
+    Assigned_Laddoos: 50,
+    Adjusted_Assigned_Laddoos: 46,
+    Target_Jalebis: 40,
+    Assigned_Jalebis: 40,
+    Adjusted_Assigned_Jalebis: 36,
+  },
+  {
+    Employee_ID: "SM014",
+    Target_Laddoos: 50,
+    Assigned_Laddoos: 50,
+    Adjusted_Assigned_Laddoos: 44,
+    Target_Jalebis: 40,
+    Assigned_Jalebis: 40,
+    Adjusted_Assigned_Jalebis: 34,
+  },
+  {
+    Employee_ID: "SM015",
+    Target_Laddoos: 50,
+    Assigned_Laddoos: 50,
+    Adjusted_Assigned_Laddoos: 47,
+    Target_Jalebis: 40,
+    Assigned_Jalebis: 40,
+    Adjusted_Assigned_Jalebis: 37,
+  },
+  {
+    Employee_ID: "SM016",
+    Target_Laddoos: 50,
+    Assigned_Laddoos: 50,
+    Adjusted_Assigned_Laddoos: 49,
+    Target_Jalebis: 40,
+    Assigned_Jalebis: 40,
+    Adjusted_Assigned_Jalebis: 39,
+  },
+  {
+    Employee_ID: "SM017",
+    Target_Laddoos: 50,
+    Assigned_Laddoos: 50,
+    Adjusted_Assigned_Laddoos: 45,
+    Target_Jalebis: 40,
+    Assigned_Jalebis: 40,
+    Adjusted_Assigned_Jalebis: 35,
+  },
+  {
+    Employee_ID: "SM018",
+    Target_Laddoos: 50,
+    Assigned_Laddoos: 50,
+    Adjusted_Assigned_Laddoos: 46,
+    Target_Jalebis: 40,
+    Assigned_Jalebis: 40,
+    Adjusted_Assigned_Jalebis: 36,
+  },
+  {
+    Employee_ID: "SM019",
+    Target_Laddoos: 50,
+    Assigned_Laddoos: 50,
+    Adjusted_Assigned_Laddoos: 48,
+    Target_Jalebis: 40,
+    Assigned_Jalebis: 40,
+    Adjusted_Assigned_Jalebis: 38,
+  },
+  {
+    Employee_ID: "SM020",
+    Target_Laddoos: 50,
+    Assigned_Laddoos: 50,
+    Adjusted_Assigned_Laddoos: 47,
+    Target_Jalebis: 40,
+    Assigned_Jalebis: 40,
+    Adjusted_Assigned_Jalebis: 37,
+  },
 ]
 
 const mockPackagersData = [
@@ -58,6 +204,22 @@ const mockPackagersData = [
   { Employee_ID: "SP002", Target_Packaged: 100, Assigned_Packaged: 100, Adjusted_Assigned_Packaged: 100 },
   { Employee_ID: "SP003", Target_Packaged: 100, Assigned_Packaged: 100, Adjusted_Assigned_Packaged: 85 },
   { Employee_ID: "SP004", Target_Packaged: 100, Assigned_Packaged: 100, Adjusted_Assigned_Packaged: 95 },
+  { Employee_ID: "SP005", Target_Packaged: 100, Assigned_Packaged: 100, Adjusted_Assigned_Packaged: 92 },
+  { Employee_ID: "SP006", Target_Packaged: 100, Assigned_Packaged: 100, Adjusted_Assigned_Packaged: 88 },
+  { Employee_ID: "SP007", Target_Packaged: 100, Assigned_Packaged: 100, Adjusted_Assigned_Packaged: 94 },
+  { Employee_ID: "SP008", Target_Packaged: 100, Assigned_Packaged: 100, Adjusted_Assigned_Packaged: 87 },
+  { Employee_ID: "SP009", Target_Packaged: 100, Assigned_Packaged: 100, Adjusted_Assigned_Packaged: 89 },
+  { Employee_ID: "SP010", Target_Packaged: 100, Assigned_Packaged: 100, Adjusted_Assigned_Packaged: 93 },
+  { Employee_ID: "SP011", Target_Packaged: 100, Assigned_Packaged: 100, Adjusted_Assigned_Packaged: 91 },
+  { Employee_ID: "SP012", Target_Packaged: 100, Assigned_Packaged: 100, Adjusted_Assigned_Packaged: 96 },
+  { Employee_ID: "SP013", Target_Packaged: 100, Assigned_Packaged: 100, Adjusted_Assigned_Packaged: 86 },
+  { Employee_ID: "SP014", Target_Packaged: 100, Assigned_Packaged: 100, Adjusted_Assigned_Packaged: 88 },
+  { Employee_ID: "SP015", Target_Packaged: 100, Assigned_Packaged: 100, Adjusted_Assigned_Packaged: 92 },
+  { Employee_ID: "SP016", Target_Packaged: 100, Assigned_Packaged: 100, Adjusted_Assigned_Packaged: 97 },
+  { Employee_ID: "SP017", Target_Packaged: 100, Assigned_Packaged: 100, Adjusted_Assigned_Packaged: 89 },
+  { Employee_ID: "SP018", Target_Packaged: 100, Assigned_Packaged: 100, Adjusted_Assigned_Packaged: 90 },
+  { Employee_ID: "SP019", Target_Packaged: 100, Assigned_Packaged: 100, Adjusted_Assigned_Packaged: 94 },
+  { Employee_ID: "SP020", Target_Packaged: 100, Assigned_Packaged: 100, Adjusted_Assigned_Packaged: 91 },
 ]
 
 const mockRetailersData = [
@@ -65,6 +227,22 @@ const mockRetailersData = [
   { Employee_ID: "RT002", Target_Sales: 25, Assigned_Sales: 25, Adjusted_Assigned_Sales: 25 },
   { Employee_ID: "RT003", Target_Sales: 25, Assigned_Sales: 25, Adjusted_Assigned_Sales: 20 },
   { Employee_ID: "RT004", Target_Sales: 25, Assigned_Sales: 25, Adjusted_Assigned_Sales: 23 },
+  { Employee_ID: "RT005", Target_Sales: 25, Assigned_Sales: 25, Adjusted_Assigned_Sales: 24 },
+  { Employee_ID: "RT006", Target_Sales: 25, Assigned_Sales: 25, Adjusted_Assigned_Sales: 21 },
+  { Employee_ID: "RT007", Target_Sales: 25, Assigned_Sales: 25, Adjusted_Assigned_Sales: 23 },
+  { Employee_ID: "RT008", Target_Sales: 25, Assigned_Sales: 25, Adjusted_Assigned_Sales: 22 },
+  { Employee_ID: "RT009", Target_Sales: 25, Assigned_Sales: 25, Adjusted_Assigned_Sales: 21 },
+  { Employee_ID: "RT010", Target_Sales: 25, Assigned_Sales: 25, Adjusted_Assigned_Sales: 24 },
+  { Employee_ID: "RT011", Target_Sales: 25, Assigned_Sales: 25, Adjusted_Assigned_Sales: 23 },
+  { Employee_ID: "RT012", Target_Sales: 25, Assigned_Sales: 25, Adjusted_Assigned_Sales: 25 },
+  { Employee_ID: "RT013", Target_Sales: 25, Assigned_Sales: 25, Adjusted_Assigned_Sales: 20 },
+  { Employee_ID: "RT014", Target_Sales: 25, Assigned_Sales: 25, Adjusted_Assigned_Sales: 22 },
+  { Employee_ID: "RT015", Target_Sales: 25, Assigned_Sales: 25, Adjusted_Assigned_Sales: 24 },
+  { Employee_ID: "RT016", Target_Sales: 25, Assigned_Sales: 25, Adjusted_Assigned_Sales: 25 },
+  { Employee_ID: "RT017", Target_Sales: 25, Assigned_Sales: 25, Adjusted_Assigned_Sales: 21 },
+  { Employee_ID: "RT018", Target_Sales: 25, Assigned_Sales: 25, Adjusted_Assigned_Sales: 22 },
+  { Employee_ID: "RT019", Target_Sales: 25, Assigned_Sales: 25, Adjusted_Assigned_Sales: 24 },
+  { Employee_ID: "RT020", Target_Sales: 25, Assigned_Sales: 25, Adjusted_Assigned_Sales: 23 },
 ]
 
 const mockFeedbackData = [
@@ -74,10 +252,61 @@ const mockFeedbackData = [
   { Employee_ID: "SM004", Date: "2025-03-08", Rating: "😊", Comment: "Productive day!" },
   { Employee_ID: "SP001", Date: "2025-03-08", Rating: "😊", Comment: "Smooth operations." },
   { Employee_ID: "RT002", Date: "2025-03-08", Rating: "😐", Comment: "Sales were okay." },
+  { Employee_ID: "SM005", Date: "2025-03-09", Rating: "😊", Comment: "had a good day at work." },
+  { Employee_ID: "RT007", Date: "2025-03-09", Rating: "☹️", Comment: "i had so much work burden." },
+  { Employee_ID: "SM006", Date: "2025-03-09", Rating: "😊", Comment: "Excellent teamwork today!" },
+  { Employee_ID: "SP003", Date: "2025-03-09", Rating: "😐", Comment: "New packaging machine needs adjustment." },
+  { Employee_ID: "RT004", Date: "2025-03-09", Rating: "😊", Comment: "Best sales day this week!" },
+  { Employee_ID: "SM007", Date: "2025-03-08", Rating: "😊", Comment: "Perfect consistency in sweets making." },
+  { Employee_ID: "SP004", Date: "2025-03-08", Rating: "😐", Comment: "Packaging materials running low." },
+  { Employee_ID: "RT005", Date: "2025-03-08", Rating: "☹️", Comment: "Store was very quiet today." },
+  { Employee_ID: "SM008", Date: "2025-03-07", Rating: "😊", Comment: "Received compliments on laddoos!" },
+  { Employee_ID: "SP005", Date: "2025-03-07", Rating: "😊", Comment: "Efficient packaging process." },
+  { Employee_ID: "RT006", Date: "2025-03-07", Rating: "😐", Comment: "Regular day at the store." },
+  { Employee_ID: "SM009", Date: "2025-03-06", Rating: "☹️", Comment: "Equipment maintenance needed." },
+  { Employee_ID: "SP006", Date: "2025-03-06", Rating: "😊", Comment: "Team coordination was great!" },
+  { Employee_ID: "RT007", Date: "2025-03-06", Rating: "😊", Comment: "New display attracted more customers." },
+  { Employee_ID: "SM010", Date: "2025-03-05", Rating: "😐", Comment: "Some ingredients were delayed." },
+  { Employee_ID: "SP007", Date: "2025-03-05", Rating: "😊", Comment: "Packaging quality improved." },
+  { Employee_ID: "RT008", Date: "2025-03-05", Rating: "☹️", Comment: "Competition had better prices." },
+  { Employee_ID: "SM011", Date: "2025-03-04", Rating: "😊", Comment: "Perfect batch of jalebis!" },
+  { Employee_ID: "SP008", Date: "2025-03-04", Rating: "😐", Comment: "New staff training needed." },
+  { Employee_ID: "RT009", Date: "2025-03-04", Rating: "😊", Comment: "Customer feedback was positive." },
+  { Employee_ID: "SM012", Date: "2025-03-03", Rating: "☹️", Comment: "Kitchen was too hot today." },
+  { Employee_ID: "SP009", Date: "2025-03-03", Rating: "😊", Comment: "Record packaging speed!" },
+  { Employee_ID: "RT010", Date: "2025-03-03", Rating: "😐", Comment: "Regular sales day." },
+  { Employee_ID: "SM013", Date: "2025-03-02", Rating: "😊", Comment: "New recipe worked well!" },
+  { Employee_ID: "SP010", Date: "2025-03-02", Rating: "☹️", Comment: "Packaging machine broke down." },
+  { Employee_ID: "RT011", Date: "2025-03-02", Rating: "😊", Comment: "Special event brought more customers." },
+  { Employee_ID: "SM014", Date: "2025-03-01", Rating: "😐", Comment: "Regular production day." },
+  { Employee_ID: "SP011", Date: "2025-03-01", Rating: "😊", Comment: "Team worked efficiently." },
+  { Employee_ID: "RT012", Date: "2025-03-01", Rating: "☹️", Comment: "Store renovation affected sales." },
+  { Employee_ID: "SM015", Date: "2025-02-28", Rating: "😊", Comment: "Perfect consistency achieved!" },
+  { Employee_ID: "SP012", Date: "2025-02-28", Rating: "😐", Comment: "Some packaging delays." },
+  { Employee_ID: "RT013", Date: "2025-02-28", Rating: "😊", Comment: "New marketing campaign successful!" },
+  { Employee_ID: "SM016", Date: "2025-02-27", Rating: "☹️", Comment: "Ingredient quality issues." },
+  { Employee_ID: "SP013", Date: "2025-02-27", Rating: "😊", Comment: "Packaging standards maintained." },
+  { Employee_ID: "RT014", Date: "2025-02-27", Rating: "😐", Comment: "Regular business day." },
+  { Employee_ID: "SM017", Date: "2025-02-26", Rating: "😊", Comment: "Team spirit was high!" },
+  { Employee_ID: "SP014", Date: "2025-02-26", Rating: "☹️", Comment: "Staff shortage affected work." },
+  { Employee_ID: "RT015", Date: "2025-02-26", Rating: "😊", Comment: "Customer satisfaction improved." },
+  { Employee_ID: "SM018", Date: "2025-02-25", Rating: "😐", Comment: "Regular production day." },
+  { Employee_ID: "SP015", Date: "2025-02-25", Rating: "😊", Comment: "Packaging efficiency increased." },
+  { Employee_ID: "RT016", Date: "2025-02-25", Rating: "☹️", Comment: "Competition opened nearby." },
+  { Employee_ID: "SM019", Date: "2025-02-24", Rating: "😊", Comment: "Perfect batch of sweets!" },
+  { Employee_ID: "SP016", Date: "2025-02-24", Rating: "😐", Comment: "Some quality checks needed." },
+  { Employee_ID: "RT017", Date: "2025-02-24", Rating: "😊", Comment: "Sales target achieved!" },
+  { Employee_ID: "SM020", Date: "2025-02-23", Rating: "☹️", Comment: "Equipment maintenance day." },
+  { Employee_ID: "SP017", Date: "2025-02-23", Rating: "😊", Comment: "Team coordination excellent!" },
+  { Employee_ID: "RT018", Date: "2025-02-23", Rating: "😐", Comment: "Regular business day." },
+  { Employee_ID: "SP018", Date: "2025-02-22", Rating: "😊", Comment: "Packaging quality improved." },
+  { Employee_ID: "RT019", Date: "2025-02-22", Rating: "☹️", Comment: "Store was understaffed." },
+  { Employee_ID: "SP019", Date: "2025-02-21", Rating: "😊", Comment: "Record packaging speed!" },
+  { Employee_ID: "RT020", Date: "2025-02-21", Rating: "😐", Comment: "Regular sales day." },
+  { Employee_ID: "SP020", Date: "2025-02-20", Rating: "😊", Comment: "Team worked efficiently." },
 ]
 
-// Add this after the existing mock data (before the Dashboard component)
-// Mock performance history data for individual performance tracking
+
 const mockPerformanceHistory = {
   SM001: [
     { date: "2025-03-01", laddoos_assigned: 45, laddoos_completed: 42, jalebis_assigned: 36, jalebis_completed: 33 },
@@ -88,7 +317,7 @@ const mockPerformanceHistory = {
     { date: "2025-03-06", laddoos_assigned: 51, laddoos_completed: 48, jalebis_assigned: 41, jalebis_completed: 39 },
     { date: "2025-03-07", laddoos_assigned: 46, laddoos_completed: 43, jalebis_assigned: 36, jalebis_completed: 34 },
   ],
-  
+
   SM002: [
     { date: "2025-03-01", laddoos_assigned: 40, laddoos_completed: 38, jalebis_assigned: 32, jalebis_completed: 30 },
     { date: "2025-03-02", laddoos_assigned: 42, laddoos_completed: 39, jalebis_assigned: 34, jalebis_completed: 31 },
@@ -215,50 +444,288 @@ const mockPerformanceHistory = {
     { date: "2025-03-06", sales_assigned: 31, sales_completed: 29 },
     { date: "2025-03-07", sales_assigned: 28, sales_completed: 26 }
   ],
-
+  SP008: [
+    { date: "2025-03-01", packages_assigned: 95, packages_completed: 91 },
+    { date: "2025-03-02", packages_assigned: 97, packages_completed: 93 },
+    { date: "2025-03-03", packages_assigned: 100, packages_completed: 96 },
+    { date: "2025-03-04", packages_assigned: 93, packages_completed: 89 },
+    { date: "2025-03-05", packages_assigned: 98, packages_completed: 94 },
+    { date: "2025-03-06", packages_assigned: 102, packages_completed: 98 },
+    { date: "2025-03-07", packages_assigned: 96, packages_completed: 92 },
+  ],
+  SP009: [
+    { date: "2025-03-01", packages_assigned: 93, packages_completed: 89 },
+    { date: "2025-03-02", packages_assigned: 95, packages_completed: 91 },
+    { date: "2025-03-03", packages_assigned: 98, packages_completed: 94 },
+    { date: "2025-03-04", packages_assigned: 91, packages_completed: 87 },
+    { date: "2025-03-05", packages_assigned: 96, packages_completed: 92 },
+    { date: "2025-03-06", packages_assigned: 100, packages_completed: 96 },
+    { date: "2025-03-07", packages_assigned: 94, packages_completed: 90 },
+  ],
+  SP010: [
+    { date: "2025-03-01", packages_assigned: 96, packages_completed: 92 },
+    { date: "2025-03-02", packages_assigned: 98, packages_completed: 94 },
+    { date: "2025-03-03", packages_assigned: 101, packages_completed: 97 },
+    { date: "2025-03-04", packages_assigned: 94, packages_completed: 90 },
+    { date: "2025-03-05", packages_assigned: 99, packages_completed: 95 },
+    { date: "2025-03-06", packages_assigned: 103, packages_completed: 99 },
+    { date: "2025-03-07", packages_assigned: 97, packages_completed: 93 },
+  ],
+  SP011: [
+    { date: "2025-03-01", packages_assigned: 92, packages_completed: 88 },
+    { date: "2025-03-02", packages_assigned: 94, packages_completed: 90 },
+    { date: "2025-03-03", packages_assigned: 97, packages_completed: 93 },
+    { date: "2025-03-04", packages_assigned: 90, packages_completed: 86 },
+    { date: "2025-03-05", packages_assigned: 95, packages_completed: 91 },
+    { date: "2025-03-06", packages_assigned: 99, packages_completed: 95 },
+    { date: "2025-03-07", packages_assigned: 93, packages_completed: 89 },
+  ],
+  SP012: [
+    { date: "2025-03-01", packages_assigned: 97, packages_completed: 93 },
+    { date: "2025-03-02", packages_assigned: 99, packages_completed: 95 },
+    { date: "2025-03-03", packages_assigned: 102, packages_completed: 98 },
+    { date: "2025-03-04", packages_assigned: 95, packages_completed: 91 },
+    { date: "2025-03-05", packages_assigned: 100, packages_completed: 96 },
+    { date: "2025-03-06", packages_assigned: 104, packages_completed: 100 },
+    { date: "2025-03-07", packages_assigned: 98, packages_completed: 94 },
+  ],
+  SP013: [
+    { date: "2025-03-01", packages_assigned: 94, packages_completed: 90 },
+    { date: "2025-03-02", packages_assigned: 96, packages_completed: 92 },
+    { date: "2025-03-03", packages_assigned: 99, packages_completed: 95 },
+    { date: "2025-03-04", packages_assigned: 92, packages_completed: 88 },
+    { date: "2025-03-05", packages_assigned: 97, packages_completed: 93 },
+    { date: "2025-03-06", packages_assigned: 101, packages_completed: 97 },
+    { date: "2025-03-07", packages_assigned: 95, packages_completed: 91 },
+  ],
+  SP014: [
+    { date: "2025-03-01", packages_assigned: 95, packages_completed: 91 },
+    { date: "2025-03-02", packages_assigned: 97, packages_completed: 93 },
+    { date: "2025-03-03", packages_assigned: 100, packages_completed: 96 },
+    { date: "2025-03-04", packages_assigned: 93, packages_completed: 89 },
+    { date: "2025-03-05", packages_assigned: 98, packages_completed: 94 },
+    { date: "2025-03-06", packages_assigned: 102, packages_completed: 98 },
+    { date: "2025-03-07", packages_assigned: 96, packages_completed: 92 },
+  ],
+  SP015: [
+    { date: "2025-03-01", packages_assigned: 93, packages_completed: 89 },
+    { date: "2025-03-02", packages_assigned: 95, packages_completed: 91 },
+    { date: "2025-03-03", packages_assigned: 98, packages_completed: 94 },
+    { date: "2025-03-04", packages_assigned: 91, packages_completed: 87 },
+    { date: "2025-03-05", packages_assigned: 96, packages_completed: 92 },
+    { date: "2025-03-06", packages_assigned: 100, packages_completed: 96 },
+    { date: "2025-03-07", packages_assigned: 94, packages_completed: 90 },
+  ],
+  SP016: [
+    { date: "2025-03-01", packages_assigned: 96, packages_completed: 92 },
+    { date: "2025-03-02", packages_assigned: 98, packages_completed: 94 },
+    { date: "2025-03-03", packages_assigned: 101, packages_completed: 97 },
+    { date: "2025-03-04", packages_assigned: 94, packages_completed: 90 },
+    { date: "2025-03-05", packages_assigned: 99, packages_completed: 95 },
+    { date: "2025-03-06", packages_assigned: 103, packages_completed: 99 },
+    { date: "2025-03-07", packages_assigned: 97, packages_completed: 93 },
+  ],
+  SP017: [
+    { date: "2025-03-01", packages_assigned: 92, packages_completed: 88 },
+    { date: "2025-03-02", packages_assigned: 94, packages_completed: 90 },
+    { date: "2025-03-03", packages_assigned: 97, packages_completed: 93 },
+    { date: "2025-03-04", packages_assigned: 90, packages_completed: 86 },
+    { date: "2025-03-05", packages_assigned: 95, packages_completed: 91 },
+    { date: "2025-03-06", packages_assigned: 99, packages_completed: 95 },
+    { date: "2025-03-07", packages_assigned: 93, packages_completed: 89 },
+  ],
+  SP018: [
+    { date: "2025-03-01", packages_assigned: 97, packages_completed: 93 },
+    { date: "2025-03-02", packages_assigned: 99, packages_completed: 95 },
+    { date: "2025-03-03", packages_assigned: 102, packages_completed: 98 },
+    { date: "2025-03-04", packages_assigned: 95, packages_completed: 91 },
+    { date: "2025-03-05", packages_assigned: 100, packages_completed: 96 },
+    { date: "2025-03-06", packages_assigned: 104, packages_completed: 100 },
+    { date: "2025-03-07", packages_assigned: 98, packages_completed: 94 },
+  ],
+  SP019: [
+    { date: "2025-03-01", packages_assigned: 94, packages_completed: 90 },
+    { date: "2025-03-02", packages_assigned: 96, packages_completed: 92 },
+    { date: "2025-03-03", packages_assigned: 99, packages_completed: 95 },
+    { date: "2025-03-04", packages_assigned: 92, packages_completed: 88 },
+    { date: "2025-03-05", packages_assigned: 97, packages_completed: 93 },
+    { date: "2025-03-06", packages_assigned: 101, packages_completed: 97 },
+    { date: "2025-03-07", packages_assigned: 95, packages_completed: 91 },
+  ],
+  SP020: [
+    { date: "2025-03-01", packages_assigned: 95, packages_completed: 91 },
+    { date: "2025-03-02", packages_assigned: 97, packages_completed: 93 },
+    { date: "2025-03-03", packages_assigned: 100, packages_completed: 96 },
+    { date: "2025-03-04", packages_assigned: 93, packages_completed: 89 },
+    { date: "2025-03-05", packages_assigned: 98, packages_completed: 94 },
+    { date: "2025-03-06", packages_assigned: 102, packages_completed: 98 },
+    { date: "2025-03-07", packages_assigned: 96, packages_completed: 92 },
+  ],
+  RT008: [
+    { date: "2025-03-01", sales_assigned: 24, sales_completed: 22 },
+    { date: "2025-03-02", sales_assigned: 25, sales_completed: 23 },
+    { date: "2025-03-03", sales_assigned: 26, sales_completed: 24 },
+    { date: "2025-03-04", sales_assigned: 23, sales_completed: 21 },
+    { date: "2025-03-05", sales_assigned: 25, sales_completed: 23 },
+    { date: "2025-03-06", sales_assigned: 27, sales_completed: 25 },
+    { date: "2025-03-07", sales_assigned: 24, sales_completed: 22 },
+  ],
+  RT009: [
+    { date: "2025-03-01", sales_assigned: 22, sales_completed: 20 },
+    { date: "2025-03-02", sales_assigned: 23, sales_completed: 21 },
+    { date: "2025-03-03", sales_assigned: 24, sales_completed: 22 },
+    { date: "2025-03-04", sales_assigned: 21, sales_completed: 19 },
+    { date: "2025-03-05", sales_assigned: 23, sales_completed: 21 },
+    { date: "2025-03-06", sales_assigned: 25, sales_completed: 23 },
+    { date: "2025-03-07", sales_assigned: 22, sales_completed: 20 },
+  ],
+  RT010: [
+    { date: "2025-03-01", sales_assigned: 25, sales_completed: 23 },
+    { date: "2025-03-02", sales_assigned: 26, sales_completed: 24 },
+    { date: "2025-03-03", sales_assigned: 27, sales_completed: 25 },
+    { date: "2025-03-04", sales_assigned: 24, sales_completed: 22 },
+    { date: "2025-03-05", sales_assigned: 26, sales_completed: 24 },
+    { date: "2025-03-06", sales_assigned: 28, sales_completed: 26 },
+    { date: "2025-03-07", sales_assigned: 25, sales_completed: 23 },
+  ],
+  RT011: [
+    { date: "2025-03-01", sales_assigned: 21, sales_completed: 19 },
+    { date: "2025-03-02", sales_assigned: 22, sales_completed: 20 },
+    { date: "2025-03-03", sales_assigned: 23, sales_completed: 21 },
+    { date: "2025-03-04", sales_assigned: 20, sales_completed: 18 },
+    { date: "2025-03-05", sales_assigned: 22, sales_completed: 20 },
+    { date: "2025-03-06", sales_assigned: 24, sales_completed: 22 },
+    { date: "2025-03-07", sales_assigned: 21, sales_completed: 19 },
+  ],
+  RT012: [
+    { date: "2025-03-01", sales_assigned: 26, sales_completed: 24 },
+    { date: "2025-03-02", sales_assigned: 27, sales_completed: 25 },
+    { date: "2025-03-03", sales_assigned: 28, sales_completed: 26 },
+    { date: "2025-03-04", sales_assigned: 25, sales_completed: 23 },
+    { date: "2025-03-05", sales_assigned: 27, sales_completed: 25 },
+    { date: "2025-03-06", sales_assigned: 29, sales_completed: 27 },
+    { date: "2025-03-07", sales_assigned: 26, sales_completed: 24 },
+  ],
+  RT013: [
+    { date: "2025-03-01", sales_assigned: 23, sales_completed: 21 },
+    { date: "2025-03-02", sales_assigned: 24, sales_completed: 22 },
+    { date: "2025-03-03", sales_assigned: 25, sales_completed: 23 },
+    { date: "2025-03-04", sales_assigned: 22, sales_completed: 20 },
+    { date: "2025-03-05", sales_assigned: 24, sales_completed: 22 },
+    { date: "2025-03-06", sales_assigned: 26, sales_completed: 24 },
+    { date: "2025-03-07", sales_assigned: 23, sales_completed: 21 },
+  ],
+  RT014: [
+    { date: "2025-03-01", sales_assigned: 24, sales_completed: 22 },
+    { date: "2025-03-02", sales_assigned: 25, sales_completed: 23 },
+    { date: "2025-03-03", sales_assigned: 26, sales_completed: 24 },
+    { date: "2025-03-04", sales_assigned: 23, sales_completed: 21 },
+    { date: "2025-03-05", sales_assigned: 25, sales_completed: 23 },
+    { date: "2025-03-06", sales_assigned: 27, sales_completed: 25 },
+    { date: "2025-03-07", sales_assigned: 24, sales_completed: 22 },
+  ],
+  RT015: [
+    { date: "2025-03-01", sales_assigned: 22, sales_completed: 20 },
+    { date: "2025-03-02", sales_assigned: 23, sales_completed: 21 },
+    { date: "2025-03-03", sales_assigned: 24, sales_completed: 22 },
+    { date: "2025-03-04", sales_assigned: 21, sales_completed: 19 },
+    { date: "2025-03-05", sales_assigned: 23, sales_completed: 21 },
+    { date: "2025-03-06", sales_assigned: 25, sales_completed: 23 },
+    { date: "2025-03-07", sales_assigned: 22, sales_completed: 20 },
+  ],
+  RT016: [
+    { date: "2025-03-01", sales_assigned: 25, sales_completed: 23 },
+    { date: "2025-03-02", sales_assigned: 26, sales_completed: 24 },
+    { date: "2025-03-03", sales_assigned: 27, sales_completed: 25 },
+    { date: "2025-03-04", sales_assigned: 24, sales_completed: 22 },
+    { date: "2025-03-05", sales_assigned: 26, sales_completed: 24 },
+    { date: "2025-03-06", sales_assigned: 28, sales_completed: 26 },
+    { date: "2025-03-07", sales_assigned: 25, sales_completed: 23 },
+  ],
+  RT017: [
+    { date: "2025-03-01", sales_assigned: 21, sales_completed: 19 },
+    { date: "2025-03-02", sales_assigned: 22, sales_completed: 20 },
+    { date: "2025-03-03", sales_assigned: 23, sales_completed: 21 },
+    { date: "2025-03-04", sales_assigned: 20, sales_completed: 18 },
+    { date: "2025-03-05", sales_assigned: 22, sales_completed: 20 },
+    { date: "2025-03-06", sales_assigned: 24, sales_completed: 22 },
+    { date: "2025-03-07", sales_assigned: 21, sales_completed: 19 },
+  ],
+  RT018: [
+    { date: "2025-03-01", sales_assigned: 26, sales_completed: 24 },
+    { date: "2025-03-02", sales_assigned: 27, sales_completed: 25 },
+    { date: "2025-03-03", sales_assigned: 28, sales_completed: 26 },
+    { date: "2025-03-04", sales_assigned: 25, sales_completed: 23 },
+    { date: "2025-03-05", sales_assigned: 27, sales_completed: 25 },
+    { date: "2025-03-06", sales_assigned: 29, sales_completed: 27 },
+    { date: "2025-03-07", sales_assigned: 26, sales_completed: 24 },
+  ],
+  RT019: [
+    { date: "2025-03-01", sales_assigned: 23, sales_completed: 21 },
+    { date: "2025-03-02", sales_assigned: 24, sales_completed: 22 },
+    { date: "2025-03-03", sales_assigned: 25, sales_completed: 23 },
+    { date: "2025-03-04", sales_assigned: 22, sales_completed: 20 },
+    { date: "2025-03-05", sales_assigned: 24, sales_completed: 22 },
+    { date: "2025-03-06", sales_assigned: 26, sales_completed: 24 },
+    { date: "2025-03-07", sales_assigned: 23, sales_completed: 21 },
+  ],
+  RT020: [
+    { date: "2025-03-01", sales_assigned: 24, sales_completed: 22 },
+    { date: "2025-03-02", sales_assigned: 25, sales_completed: 23 },
+    { date: "2025-03-03", sales_assigned: 26, sales_completed: 24 },
+    { date: "2025-03-04", sales_assigned: 23, sales_completed: 21 },
+    { date: "2025-03-05", sales_assigned: 25, sales_completed: 23 },
+    { date: "2025-03-06", sales_assigned: 27, sales_completed: 25 },
+    { date: "2025-03-07", sales_assigned: 24, sales_completed: 22 },
+  ],
 }
 export default function Dashboard() {
   const [orderVolume, setOrderVolume] = useState(1000)
-  const [sweetsMakersData, setSweetsMakersData] = useState(mockSweetsMakersData)
-  const [packagersData, setPackagersData] = useState(mockPackagersData)
-  const [retailersData, setRetailersData] = useState(mockRetailersData)
+  const [sweetsMakersData, setSweetsMakersData] = useState([mockSweetsMakersData]);
+  const [packagersData, setPackagersData] = useState([mockPackagersData]);
+  const [retailersData, setRetailersData] = useState([mockRetailersData]);
   const [feedbackData, setFeedbackData] = useState(mockFeedbackData)
+  const [excludeEmployeeId, setExcludeEmployeeId] = useState("")
+  const [workerGroup, setWorkerGroup] = useState("")
+  const [isLoading, setIsLoading] = useState(false)
 
   // Add these state variables inside the Dashboard component, after the existing useState declarations
-  const [selectedEmployee, setSelectedEmployee] = useState("SM001")
+  const [selectedEmployee, setSelectedEmployee] = useState("SM01")
   const [performanceData, setPerformanceData] = useState(mockPerformanceHistory["SM001"])
 
   // Recalculate targets based on order volume
   // Replace the existing mock-based function with:
-const recalculateTargets = async () => {
-  try {
-    const response = await fetch('http://localhost:5000/calculate', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        orderVolume: orderVolume
-      })
-    });
+  const recalculateTargets = async () => {
+    try {
+      setIsLoading(true) // Start loading
+      const response = await fetch('http://localhost:5000/calculate', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          orderVolume: orderVolume,
+          excludeEmployeeId: excludeEmployeeId,
+          workerGroup: workerGroup
+        })
+      });
 
-    if (!response.ok) throw new Error('Failed to recalculate targets');
-    
-    const apiData = await response.json();
-    
-    // Update all worker data states
-    setSweetsMakersData(apiData.sweetsMakers);
-    setPackagersData(apiData.packagers);
-    setRetailersData(apiData.retailers);
+      if (!response.ok) throw new Error('Failed to recalculate targets');
 
-  } catch (error) {
-    console.error('API Error:', error);
-    // Add error handling here
+      const apiData = await response.json();
+
+      setSweetsMakersData(apiData.sweetsMakers);
+      setPackagersData(apiData.packagers);
+      setRetailersData(apiData.retailers);
+
+    } catch (error) {
+      console.error('API Error:', error);
+    } finally {
+      setIsLoading(false)
+    }
   }
-}
 
-  // Add these helper functions inside the Dashboard component, after the recalculateTargets function
-  // Find the best worker in each category
+
   const findBestWorker = (workerGroup, metric) => {
     if (workerGroup === "sweetsMakers") {
       // For sweets makers, find the one with highest completion rate (smallest difference between assigned and adjusted)
@@ -305,6 +772,11 @@ const recalculateTargets = async () => {
       setPerformanceData(mockPerformanceHistory[selectedEmployee])
     }
   }, [selectedEmployee])
+
+  // Add this useEffect hook after the existing useState declarations:
+  useEffect(() => {
+    recalculateTargets();
+  }, []); // Runs once on component mount
 
   // Prepare chart data for sweets makers (Laddoos)
   const sweetsMakersLaddoosChartData = {
@@ -458,25 +930,82 @@ const recalculateTargets = async () => {
 
   return (
     <div className="container mx-auto py-6">
-      <h1 className="text-3xl font-bold mb-6">Sweets Production Dashboard</h1>
+      <div className="mb-6"></div> 
 
       <Card className="mb-6">
         <CardHeader>
           <CardTitle>Daily Order Input</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="flex items-end gap-4">
-            <div className="grid w-full max-w-sm items-center gap-1.5">
-              <label htmlFor="orderVolume">Order Volume</label>
-              <Input
-                id="orderVolume"
-                type="number"
-                value={orderVolume}
-                onChange={(e) => setOrderVolume(Number.parseInt(e.target.value))}
-                min="1"
-              />
+          <div className="flex flex-col gap-4">
+            <div className="flex items-end gap-4 flex-wrap">
+              {/* Order Volume Input */}
+              <div className="grid w-full max-w-sm items-center gap-1.5">
+                <label htmlFor="orderVolume">Order Volume</label>
+                <Input
+                  id="orderVolume"
+                  type="number"
+                  value={orderVolume}
+                  onChange={(e) => setOrderVolume(Number.parseInt(e.target.value))}
+                  min="1"
+                />
+              </div>
+
+              {/* Exclusion Controls */}
+              <div className="flex items-end gap-4 flex-wrap">
+                {/* Employee ID Input */}
+                <div className="grid w-full max-w-sm items-center gap-1.5">
+                  <label htmlFor="excludeEmployee">Employee to Exclude</label>
+                  <Input
+                    id="excludeEmployee"
+                    placeholder="e.g. SM01,SPO1,R01"
+                    value={excludeEmployeeId}
+                    onChange={(e) => setExcludeEmployeeId(e.target.value)}
+                  />
+                </div>
+
+                {/* Worker Group Select */}
+                <div className="grid w-full max-w-sm items-center gap-1.5">
+                  <label>Worker Group</label>
+                  <Select value={workerGroup} onValueChange={setWorkerGroup}>
+                    <SelectTrigger className="w-[180px]">
+                      <SelectValue placeholder="Select group" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="sweetsMakers">Sweets Makers</SelectItem>
+                      <SelectItem value="packagers">Packagers</SelectItem>
+                      <SelectItem value="retailers">Retailers</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                {/* Add Buttons Here */}
+                <div className="flex gap-2">
+                  <Button
+                    onClick={recalculateTargets}
+                    disabled={isLoading}
+                  >
+                    {isLoading ? (
+                      <div className="flex items-center gap-2">
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                        Calculating...
+                      </div>
+                    ) : (
+                      "Recalculate Targets"
+                    )}
+                  </Button>
+                  <Button
+                    variant="outline"
+                    onClick={() => {
+                      setExcludeEmployeeId("");
+                      setWorkerGroup("");
+                    }}
+                  >
+                    Clear Filters
+                  </Button>
+                </div>
+              </div>
             </div>
-            <Button onClick={recalculateTargets}>Recalculate Targets</Button>
           </div>
         </CardContent>
       </Card>
@@ -531,7 +1060,7 @@ const recalculateTargets = async () => {
                       {Math.round(
                         (findBestWorker("sweetsMakers").Adjusted_Assigned_Laddoos /
                           findBestWorker("sweetsMakers").Assigned_Laddoos) *
-                          100,
+                        100,
                       )}
                       %
                     </p>
@@ -542,7 +1071,7 @@ const recalculateTargets = async () => {
                       {Math.round(
                         (findBestWorker("sweetsMakers").Adjusted_Assigned_Jalebis /
                           findBestWorker("sweetsMakers").Assigned_Jalebis) *
-                          100,
+                        100,
                       )}
                       %
                     </p>
@@ -652,7 +1181,7 @@ const recalculateTargets = async () => {
                     {Math.round(
                       (findBestWorker("packagers").Adjusted_Assigned_Packaged /
                         findBestWorker("packagers").Assigned_Packaged) *
-                        100,
+                      100,
                     )}
                     %
                   </p>
@@ -734,7 +1263,7 @@ const recalculateTargets = async () => {
                     {Math.round(
                       (findBestWorker("retailers").Adjusted_Assigned_Sales /
                         findBestWorker("retailers").Assigned_Sales) *
-                        100,
+                      100,
                     )}
                     %
                   </p>
@@ -899,16 +1428,61 @@ const recalculateTargets = async () => {
                         <SelectItem value="SM003">SM003 (Sweets Maker)</SelectItem>
                         <SelectItem value="SM004">SM004 (Sweets Maker)</SelectItem>
                         <SelectItem value="SM005">SM005 (Sweets Maker)</SelectItem>
+                        <SelectItem value="SM006">SM006 (Sweets Maker)</SelectItem>
+                        <SelectItem value="SM007">SM007 (Sweets Maker)</SelectItem>
+                        <SelectItem value="SM008">SM008 (Sweets Maker)</SelectItem>
+                        <SelectItem value="SM009">SM009 (Sweets Maker)</SelectItem>
+                        <SelectItem value="SM010">SM010 (Sweets Maker)</SelectItem>
+                        <SelectItem value="SM011">SM011 (Sweets Maker)</SelectItem>
+                        <SelectItem value="SM012">SM012 (Sweets Maker)</SelectItem>
+                        <SelectItem value="SM013">SM013 (Sweets Maker)</SelectItem>
+                        <SelectItem value="SM014">SM014 (Sweets Maker)</SelectItem>
+                        <SelectItem value="SM015">SM015 (Sweets Maker)</SelectItem>
+                        <SelectItem value="SM016">SM016 (Sweets Maker)</SelectItem>
+                        <SelectItem value="SM017">SM017 (Sweets Maker)</SelectItem>
+                        <SelectItem value="SM018">SM018 (Sweets Maker)</SelectItem>
+                        <SelectItem value="SM019">SM019 (Sweets Maker)</SelectItem>
+                        <SelectItem value="SM020">SM020 (Sweets Maker)</SelectItem>
                         <SelectItem value="SP001">SP001 (Packager)</SelectItem>
                         <SelectItem value="SP002">SP002 (Packager)</SelectItem>
                         <SelectItem value="SP003">SP003 (Packager)</SelectItem>
                         <SelectItem value="SP004">SP004 (Packager)</SelectItem>
                         <SelectItem value="SP005">SP005 (Packager)</SelectItem>
+                        <SelectItem value="SP006">SP006 (Packager)</SelectItem>
+                        <SelectItem value="SP007">SP007 (Packager)</SelectItem>
+                        <SelectItem value="SP008">SP008 (Packager)</SelectItem>
+                        <SelectItem value="SP009">SP009 (Packager)</SelectItem>
+                        <SelectItem value="SP010">SP010 (Packager)</SelectItem>
+                        <SelectItem value="SP011">SP011 (Packager)</SelectItem>
+                        <SelectItem value="SP012">SP012 (Packager)</SelectItem>
+                        <SelectItem value="SP013">SP013 (Packager)</SelectItem>
+                        <SelectItem value="SP014">SP014 (Packager)</SelectItem>
+                        <SelectItem value="SP015">SP015 (Packager)</SelectItem>
+                        <SelectItem value="SP016">SP016 (Packager)</SelectItem>
+                        <SelectItem value="SP017">SP017 (Packager)</SelectItem>
+                        <SelectItem value="SP018">SP018 (Packager)</SelectItem>
+                        <SelectItem value="SP019">SP019 (Packager)</SelectItem>
+                        <SelectItem value="SP020">SP020 (Packager)</SelectItem>
                         <SelectItem value="RT001">RT001 (Retailer)</SelectItem>
                         <SelectItem value="RT002">RT002 (Retailer)</SelectItem>
                         <SelectItem value="RT003">RT003 (Retailer)</SelectItem>
                         <SelectItem value="RT004">RT004 (Retailer)</SelectItem>
                         <SelectItem value="RT005">RT005 (Retailer)</SelectItem>
+                        <SelectItem value="RT006">RT006 (Retailer)</SelectItem>
+                        <SelectItem value="RT007">RT007 (Retailer)</SelectItem>
+                        <SelectItem value="RT008">RT008 (Retailer)</SelectItem>
+                        <SelectItem value="RT009">RT009 (Retailer)</SelectItem>
+                        <SelectItem value="RT010">RT010 (Retailer)</SelectItem>
+                        <SelectItem value="RT011">RT011 (Retailer)</SelectItem>
+                        <SelectItem value="RT012">RT012 (Retailer)</SelectItem>
+                        <SelectItem value="RT013">RT013 (Retailer)</SelectItem>
+                        <SelectItem value="RT014">RT014 (Retailer)</SelectItem>
+                        <SelectItem value="RT015">RT015 (Retailer)</SelectItem>
+                        <SelectItem value="RT016">RT016 (Retailer)</SelectItem>
+                        <SelectItem value="RT017">RT017 (Retailer)</SelectItem>
+                        <SelectItem value="RT018">RT018 (Retailer)</SelectItem>
+                        <SelectItem value="RT019">RT019 (Retailer)</SelectItem>
+                        <SelectItem value="RT020">RT020 (Retailer)</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
