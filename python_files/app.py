@@ -6,7 +6,7 @@ from io import BytesIO
 import zipfile
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, origins=["https://ai-retail-scheduler.vercel.app"])
 
 def aggregate_data(df, group_column):
     """Aggregate data by Employee_ID and sum numerical columns"""
