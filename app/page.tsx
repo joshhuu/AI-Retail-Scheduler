@@ -16,7 +16,38 @@ import { Loader2 } from "lucide-react"
 
 
 // Mock data - in a real application, this would be loaded from CSV files
-const mockSweetsMakersData = [
+type SweetsMaker = {
+  Employee_ID: string;
+  Target_Laddoos: number;
+  Assigned_Laddoos: number;
+  Adjusted_Assigned_Laddoos: number;
+  Target_Jalebis: number;
+  Assigned_Jalebis: number;
+  Adjusted_Assigned_Jalebis: number;
+};
+type Packager = {
+  Employee_ID: string;
+  Target_Packaged: number;
+  Assigned_Packaged: number;
+  Adjusted_Assigned_Packaged: number;
+};
+type Retailer = {
+  Employee_ID: string;
+  Target_Sales: number;
+  Assigned_Sales: number;
+  Adjusted_Assigned_Sales: number;
+};
+type Feedback = {
+  Employee_ID: string;
+  Date: string;
+  Rating: string;
+  Comment: string;
+};
+type PerformanceHistory = {
+  [key: string]: any[];
+};
+
+const mockSweetsMakersData: SweetsMaker[] = [
   {
     Employee_ID: "SM001",
     Target_Laddoos: 50,
@@ -199,7 +230,7 @@ const mockSweetsMakersData = [
   },
 ]
 
-const mockPackagersData = [
+const mockPackagersData: Packager[] = [
   { Employee_ID: "SP001", Target_Packaged: 100, Assigned_Packaged: 100, Adjusted_Assigned_Packaged: 90 },
   { Employee_ID: "SP002", Target_Packaged: 100, Assigned_Packaged: 100, Adjusted_Assigned_Packaged: 100 },
   { Employee_ID: "SP003", Target_Packaged: 100, Assigned_Packaged: 100, Adjusted_Assigned_Packaged: 85 },
@@ -222,7 +253,7 @@ const mockPackagersData = [
   { Employee_ID: "SP020", Target_Packaged: 100, Assigned_Packaged: 100, Adjusted_Assigned_Packaged: 91 },
 ]
 
-const mockRetailersData = [
+const mockRetailersData: Retailer[] = [
   { Employee_ID: "RT001", Target_Sales: 25, Assigned_Sales: 25, Adjusted_Assigned_Sales: 22 },
   { Employee_ID: "RT002", Target_Sales: 25, Assigned_Sales: 25, Adjusted_Assigned_Sales: 25 },
   { Employee_ID: "RT003", Target_Sales: 25, Assigned_Sales: 25, Adjusted_Assigned_Sales: 20 },
@@ -245,7 +276,7 @@ const mockRetailersData = [
   { Employee_ID: "RT020", Target_Sales: 25, Assigned_Sales: 25, Adjusted_Assigned_Sales: 23 },
 ]
 
-const mockFeedbackData = [
+const mockFeedbackData: Feedback[] = [
   { Employee_ID: "SM001", Date: "2025-03-09", Rating: "😊", Comment: "Great day at work!" },
   { Employee_ID: "SP002", Date: "2025-03-09", Rating: "😐", Comment: "Average day, some challenges with packaging." },
   { Employee_ID: "RT003", Date: "2025-03-09", Rating: "☹️", Comment: "Difficult customers today." },
@@ -307,7 +338,7 @@ const mockFeedbackData = [
 ]
 
 
-const mockPerformanceHistory = {
+const mockPerformanceHistory: PerformanceHistory = {
   SM001: [
     { date: "2025-03-01", laddoos_assigned: 45, laddoos_completed: 42, jalebis_assigned: 36, jalebis_completed: 33 },
     { date: "2025-03-02", laddoos_assigned: 48, laddoos_completed: 45, jalebis_assigned: 38, jalebis_completed: 36 },
@@ -680,22 +711,22 @@ const mockPerformanceHistory = {
   ],
 }
 export default function Dashboard() {
-  const [orderVolume, setOrderVolume] = useState(1000)
-  const [sweetsMakersData, setSweetsMakersData] = useState([mockSweetsMakersData]);
-  const [packagersData, setPackagersData] = useState([mockPackagersData]);
-  const [retailersData, setRetailersData] = useState([mockRetailersData]);
-  const [feedbackData, setFeedbackData] = useState(mockFeedbackData)
-  const [excludeEmployeeId, setExcludeEmployeeId] = useState("")
-  const [workerGroup, setWorkerGroup] = useState("")
-  const [isLoading, setIsLoading] = useState(false)
+  const [orderVolume, setOrderVolume] = useState<number>(1000)
+  const [sweetsMakersData, setSweetsMakersData] = useState<SweetsMaker[]>(mockSweetsMakersData);
+  const [packagersData, setPackagersData] = useState<Packager[]>(mockPackagersData);
+  const [retailersData, setRetailersData] = useState<Retailer[]>(mockRetailersData);
+  const [feedbackData, setFeedbackData] = useState<Feedback[]>(mockFeedbackData)
+  const [excludeEmployeeId, setExcludeEmployeeId] = useState<string>("")
+  const [workerGroup, setWorkerGroup] = useState<string>("")
+  const [isLoading, setIsLoading] = useState<boolean>(false)
 
   // Add these state variables inside the Dashboard component, after the existing useState declarations
-  const [selectedEmployee, setSelectedEmployee] = useState("SM01")
-  const [performanceData, setPerformanceData] = useState(mockPerformanceHistory["SM001"])
+  const [selectedEmployee, setSelectedEmployee] = useState<string>("SM001")
+  const [performanceData, setPerformanceData] = useState<any[]>(mockPerformanceHistory["SM001"])
 
   // Recalculate targets based on order volume
   // Replace the existing mock-based function with:
-  const recalculateTargets = async () => {
+  const recalculateTargets = async (): Promise<void> => {
     try {
       setIsLoading(true) // Start loading
       const response = await fetch('http://localhost:5000/calculate', {
@@ -726,7 +757,7 @@ export default function Dashboard() {
   }
 
 
-  const findBestWorker = (workerGroup, metric) => {
+  const findBestWorker = (workerGroup: string, metric?: string) => {
     if (workerGroup === "sweetsMakers") {
       // For sweets makers, find the one with highest completion rate (smallest difference between assigned and adjusted)
       return sweetsMakersData.reduce((best, current) => {
@@ -761,9 +792,9 @@ export default function Dashboard() {
   }
 
   // Handle employee selection change
-  const handleEmployeeChange = (employeeId) => {
+  const handleEmployeeChange = (employeeId: string) => {
     setSelectedEmployee(employeeId)
-    setPerformanceData(mockPerformanceHistory[employeeId] || [])
+  setPerformanceData(mockPerformanceHistory[employeeId] || [])
   }
 
   // Add this effect to update performance data when selected employee changes
@@ -775,7 +806,10 @@ export default function Dashboard() {
 
   // Add this useEffect hook after the existing useState declarations:
   useEffect(() => {
-    recalculateTargets();
+    // Hydration mismatch fix: Only run recalculateTargets on client
+    if (typeof window !== "undefined") {
+      recalculateTargets();
+    }
   }, []); // Runs once on component mount
 
   // Prepare chart data for sweets makers (Laddoos)
@@ -847,7 +881,7 @@ export default function Dashboard() {
   }
 
   // Prepare feedback chart data
-  const feedbackRatings = feedbackData.reduce((acc, item) => {
+  const feedbackRatings: { [key: string]: number } = feedbackData.reduce((acc: { [key: string]: number }, item: Feedback) => {
     acc[item.Rating] = (acc[item.Rating] || 0) + 1
     return acc
   }, {})
@@ -1050,29 +1084,39 @@ export default function Dashboard() {
             <CardContent>
               <div className="flex items-center justify-between">
                 <div>
-                  <h3 className="text-xl font-bold">{findBestWorker("sweetsMakers").Employee_ID}</h3>
+                  {(() => {
+                    const best = findBestWorker("sweetsMakers");
+                    if (best && "Employee_ID" in best) {
+                      return <h3 className="text-xl font-bold">{best.Employee_ID}</h3>;
+                    }
+                    return null;
+                  })()}
                   <p className="text-sm text-muted-foreground">Sweets Maker</p>
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <p className="text-sm text-muted-foreground">Laddoos Efficiency</p>
                     <p className="text-lg font-medium">
-                      {Math.round(
-                        (findBestWorker("sweetsMakers").Adjusted_Assigned_Laddoos /
-                          findBestWorker("sweetsMakers").Assigned_Laddoos) *
-                        100,
-                      )}
+                      {(() => {
+                        const best = findBestWorker("sweetsMakers");
+                        if (best && "Adjusted_Assigned_Laddoos" in best && "Assigned_Laddoos" in best) {
+                          return Math.round((best.Adjusted_Assigned_Laddoos / best.Assigned_Laddoos) * 100);
+                        }
+                        return "N/A";
+                      })()}
                       %
                     </p>
                   </div>
                   <div>
                     <p className="text-sm text-muted-foreground">Jalebis Efficiency</p>
                     <p className="text-lg font-medium">
-                      {Math.round(
-                        (findBestWorker("sweetsMakers").Adjusted_Assigned_Jalebis /
-                          findBestWorker("sweetsMakers").Assigned_Jalebis) *
-                        100,
-                      )}
+                      {(() => {
+                        const best = findBestWorker("sweetsMakers");
+                        if (best && "Adjusted_Assigned_Jalebis" in best && "Assigned_Jalebis" in best) {
+                          return Math.round((best.Adjusted_Assigned_Jalebis / best.Assigned_Jalebis) * 100);
+                        }
+                        return "N/A";
+                      })()}
                       %
                     </p>
                   </div>
@@ -1141,8 +1185,8 @@ export default function Dashboard() {
                   </TableRow>
                 </TableHeader>
                 <TableBody>
-                  {sweetsMakersData.map((maker) => (
-                    <TableRow key={maker.Employee_ID}>
+                  {sweetsMakersData.map((maker, index) => (
+                    <TableRow key={maker.Employee_ID || index}>
                       <TableCell>{maker.Employee_ID}</TableCell>
                       <TableCell>{maker.Assigned_Laddoos}</TableCell>
                       <TableCell>{maker.Adjusted_Assigned_Laddoos}</TableCell>
@@ -1172,17 +1216,25 @@ export default function Dashboard() {
             <CardContent>
               <div className="flex items-center justify-between">
                 <div>
-                  <h3 className="text-xl font-bold">{findBestWorker("packagers").Employee_ID}</h3>
+                  {(() => {
+                    const best = findBestWorker("packagers");
+                    if (best && "Employee_ID" in best) {
+                      return <h3 className="text-xl font-bold">{best.Employee_ID}</h3>;
+                    }
+                    return null;
+                  })()}
                   <p className="text-sm text-muted-foreground">Packager</p>
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">Packaging Efficiency</p>
                   <p className="text-lg font-medium">
-                    {Math.round(
-                      (findBestWorker("packagers").Adjusted_Assigned_Packaged /
-                        findBestWorker("packagers").Assigned_Packaged) *
-                      100,
-                    )}
+                    {(() => {
+                      const best = findBestWorker("packagers");
+                      if (best && "Adjusted_Assigned_Packaged" in best && "Assigned_Packaged" in best) {
+                        return Math.round((best.Adjusted_Assigned_Packaged / best.Assigned_Packaged) * 100);
+                      }
+                      return "N/A";
+                    })()}
                     %
                   </p>
                 </div>
@@ -1225,8 +1277,8 @@ export default function Dashboard() {
                   </TableRow>
                 </TableHeader>
                 <TableBody>
-                  {packagersData.map((packager) => (
-                    <TableRow key={packager.Employee_ID}>
+                  {packagersData.map((packager, index) => (
+                    <TableRow key={packager.Employee_ID || index}>
                       <TableCell>{packager.Employee_ID}</TableCell>
                       <TableCell>{packager.Assigned_Packaged}</TableCell>
                       <TableCell>{packager.Adjusted_Assigned_Packaged}</TableCell>
@@ -1254,17 +1306,25 @@ export default function Dashboard() {
             <CardContent>
               <div className="flex items-center justify-between">
                 <div>
-                  <h3 className="text-xl font-bold">{findBestWorker("retailers").Employee_ID}</h3>
+                  {(() => {
+                    const best = findBestWorker("retailers");
+                    if (best && "Employee_ID" in best) {
+                      return <h3 className="text-xl font-bold">{best.Employee_ID}</h3>;
+                    }
+                    return null;
+                  })()}
                   <p className="text-sm text-muted-foreground">Retailer</p>
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">Sales Efficiency</p>
                   <p className="text-lg font-medium">
-                    {Math.round(
-                      (findBestWorker("retailers").Adjusted_Assigned_Sales /
-                        findBestWorker("retailers").Assigned_Sales) *
-                      100,
-                    )}
+                    {(() => {
+                      const best = findBestWorker("retailers");
+                      if (best && "Adjusted_Assigned_Sales" in best && "Assigned_Sales" in best) {
+                        return Math.round((best.Adjusted_Assigned_Sales / best.Assigned_Sales) * 100);
+                      }
+                      return "N/A";
+                    })()}
                     %
                   </p>
                 </div>
@@ -1307,8 +1367,8 @@ export default function Dashboard() {
                   </TableRow>
                 </TableHeader>
                 <TableBody>
-                  {retailersData.map((retailer) => (
-                    <TableRow key={retailer.Employee_ID}>
+                  {retailersData.map((retailer, index) => (
+                    <TableRow key={retailer.Employee_ID || index}>
                       <TableCell>{retailer.Employee_ID}</TableCell>
                       <TableCell>{retailer.Assigned_Sales}</TableCell>
                       <TableCell>{retailer.Adjusted_Assigned_Sales}</TableCell>
@@ -1395,7 +1455,7 @@ export default function Dashboard() {
                 </TableHeader>
                 <TableBody>
                   {feedbackData.map((feedback, index) => (
-                    <TableRow key={index}>
+                    <TableRow key={feedback.Employee_ID + feedback.Date + index}>
                       <TableCell>{feedback.Employee_ID}</TableCell>
                       <TableCell>{feedback.Date}</TableCell>
                       <TableCell>{feedback.Rating}</TableCell>
@@ -1544,7 +1604,7 @@ export default function Dashboard() {
                       </TableHeader>
                       <TableBody>
                         {performanceData.map((item, index) => (
-                          <TableRow key={index}>
+                          <TableRow key={item.date + index}>
                             <TableCell>{item.date}</TableCell>
                             {selectedEmployee.startsWith("SM") && (
                               <>
