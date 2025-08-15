@@ -729,7 +729,8 @@ export default function Dashboard() {
   const recalculateTargets = async (): Promise<void> => {
     try {
       setIsLoading(true) // Start loading
-      const response = await fetch('http://localhost:5000/calculate', {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+      const response = await fetch(`${apiUrl}/calculate`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
