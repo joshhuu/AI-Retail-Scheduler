@@ -13,7 +13,7 @@ import { Badge } from "@/components/ui/badge"
 import { LineChart } from "@/components/ui/chart"
 import { Trophy, TrendingUp } from "lucide-react"
 import { Loader2 } from "lucide-react"
-
+import { calculateOrder } from "@/lib/utils"
 
 // Mock data - in a real application, this would be loaded from CSV files
 type SweetsMaker = {
@@ -1027,7 +1027,7 @@ export default function Dashboard() {
                     ) : (
                       "Recalculate Targets"
                     )}
-                  </Button>
+                                   </Button>
                   <Button
                     variant="outline"
                     onClick={() => {
