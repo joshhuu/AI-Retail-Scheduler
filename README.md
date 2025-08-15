@@ -1,5 +1,7 @@
 # AI Retail Scheduler
 
+<img width="1903" height="1079" alt="image" src="https://github.com/user-attachments/assets/cbeb1348-0316-4b74-9159-719c48e186ad" />
+
 A full-stack AI-powered platform for smart scheduling and performance tracking in retail operations. Built with Next.js (frontend) and Flask (backend), deployed on Vercel and Render.
 
 ## Features
