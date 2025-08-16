@@ -19,7 +19,7 @@ A full-stack AI-powered platform for smart scheduling and performance tracking i
 ## Getting Started
 
 ### Backend (Flask)
-1. Clone the repo and navigate to the project folder.
+1. Clone the repo and navigate to the project folder
 2. Create and activate a Python virtual environment:
    ```powershell
    python -m venv env
@@ -51,13 +51,13 @@ A full-stack AI-powered platform for smart scheduling and performance tracking i
    ```powershell
    npm run dev
    ```
-4. For deployment, set `NEXT_PUBLIC_API_URL` in Vercel project settings.
+4. For deployment, set `NEXT_PUBLIC_API_URL` in Vercel project settings
 
 ## Deployment
-- **Backend:** Deploy to Render using Gunicorn. Set up environment and start command as above.
-- **Frontend:** Deploy to Vercel. Set `NEXT_PUBLIC_API_URL` to your Render backend URL in Vercel settings.
-
+- **Backend:** Deploy to Render using Gunicorn. Set up environment and start command as above
+- **Frontend:** Deploy to Vercel. Set `NEXT_PUBLIC_API_URL` to your Render backend URL in Vercel settings
+  
 ## Usage
-- Input daily order volume and apply filters to exclude employees or groups.
-- Click "Recalculate Targets" to fetch AI-driven assignments and view analytics.
-- Explore tabs for sweets makers, packagers, retailers, feedback, and individual performance.
+- Input daily order volume and apply filters to exclude employees or groups
+- Click "Recalculate Targets" to fetch AI-driven assignments and view analytics
+- Explore tabs for sweets makers, packagers, retailers, feedback, and individual performance
